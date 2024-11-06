@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazirmatn-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vazir-Bold';
+    src: url('../fonts/Vazirmatn-Bold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    background-color: #f7f9fc;
+    font-family: 'Vazir';
+    background: linear-gradient(135deg, #00aaff, #66ff99);
+    height: 100vh;
+}
+.card {
+    text-align: right;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.card-body {
+    padding: 30px;
+}
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Vazir-Bold' !important;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.card-header {
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.workshop-info {
+    background-color: #e8f4ff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    display: none; /* پنهان تا زمانی که جزییات کلیک شود */
+}
+.toggle-info {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+}
