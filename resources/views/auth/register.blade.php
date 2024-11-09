@@ -8,6 +8,8 @@
         <!-- فرم ثبت نام همایش -->
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @include('partial-views.logo')
+
                 <div class="card">
                     <div class="card-header">
                         ثبت‌نام در همایش اتحادیه کشوری سوخت‌های جایگزین
