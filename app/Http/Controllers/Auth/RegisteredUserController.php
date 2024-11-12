@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -34,13 +35,13 @@ class RegisteredUserController extends Controller
 
         $user = User::where('national_code', $nationalCode)->first();
 
-        if ($user && $user->code_expires_at && $user->code_expires_at->isFuture() &&
-            Hash::check($inputCode, $user->verification_code)) {
+        if ($user && $user->code_expires_at && Hash::check($inputCode, $user->verification_code)) {
             $user->verification_code = null;
             $user->code_expires_at = null;
             $user->save();
 
-            return redirect()->route('dashboard');
+
+            return view('dashboard');
         } else {
             return back()->withErrors(['verification_code' => 'کد وارد شده صحیح نیست یا منقضی شده است.']);
         }
@@ -51,14 +52,24 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
-            'national_code' => ['required', 'numeric', 'digits:10'],
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'mobile' => ['required', 'numeric', 'digits:11'],
             'type' => ['required', 'string', 'max:255'],
+        ], [
+            'name.required' => 'وارد کردن نام الزامی است',
+            'mobile.required' => 'وارد کردن شماره موبایل الزامی است',
+            'mobile.digits' => 'شماره موبایل باید 11 رقم باشد',
+            'mobile.numeric' => 'شماره موبایل باید بصورت عددی وارد شود',
+            'type.required' => 'انتخاب کردن مرکز الزامی است',
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $verificationCode = rand(100000, 999999);
 
