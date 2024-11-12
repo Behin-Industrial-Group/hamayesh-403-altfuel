@@ -1,13 +1,15 @@
 @font-face {
     font-family: 'Vazir';
-    src: url('../fonts/Vazirmatn-Regular.ttf') format('ttf');
+    src: url('../fonts/Vazir.ttf') format('ttf'),
+    url('../fonts/Vazir.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Vazir-Bold';
-    src: url('../fonts/Vazirmatn-Bold.ttf') format('ttf');
+    src: url('../fonts/Vazir-Bold.ttf') format('ttf'),
+    url('../fonts/Vazir-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -67,6 +69,7 @@ h1, h2, h3, h4, h5, h6{
     font-weight: bold;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    font-family: 'Vazir';
 }
 .form-control {
     border-radius: 8px;
